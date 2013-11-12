@@ -8,6 +8,8 @@ Bundler.require(:default, Rails.env)
 
 module LeMondeErgo
   class Application < Rails::Application
+    LE_MONDE_SITE_URL = "http://www.lemonde.fr"
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
