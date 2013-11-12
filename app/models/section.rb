@@ -20,18 +20,15 @@ class Section
 
   def self.lasts
     raw_sections = getSectionsFromLeMonde
-    sections = formatSections(raw_sections)
+
+    sections = []
+    raw_sections.each do |s|
+      sections.push(formatSection(s))
+    end
+
     return sections
   end
 
-  def self.formatSections(htmlSections)
-    sections = []
-    htmlSections.each do |s|
-      sections.push(formatSection(s))
-    end
-    return sections
-  end
-  
   def self.formatSection(domSection)
     header = domSection.css(CSS_QUERY_FOR_HEADER).text
 

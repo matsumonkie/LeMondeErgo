@@ -11,11 +11,19 @@ class Article
     @desc = desc
     @link = link
   end
-
+  
   def self.getMainArticleFromDOM(dom)
     title = dom.css("h2").text
     desc =  dom.css("p").text
+
+    # I have no idea why I have to do that shit below :-(
     link = ""
+    dom.css("a").each do |a|
+      link = a['href']
+    end
+
+    link = addWebsiteURLIfMissing(link)
+
     return Article.new(title, desc, link)
   end
 
@@ -30,12 +38,7 @@ class Article
     links = []
     dom.css("a").each do |l|
       link = l['href']
-      link = if (link.start_with?("/"))
-               LeMondeErgo::Application::LE_MONDE_SITE_URL + link
-             else
-               link
-             end
-      
+      link = addWebsiteURLIfMissing(link)      
       links.push(link)
     end
 
@@ -45,5 +48,17 @@ class Article
 
     return articles  
   end
+
+  private
+
+  def self.addWebsiteURLIfMissing(url)
+    url = if (url.start_with?("/"))
+      LeMondeErgo::Application::LE_MONDE_SITE_URL + url
+    else
+      url
+    end
+    
+    return url
+  end  
   
 end
