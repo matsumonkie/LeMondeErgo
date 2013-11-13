@@ -1,2 +1,3 @@
 - @sections.each do |section|
+  %h1= section.header
   = render partial: 'article', collection: section.articles
