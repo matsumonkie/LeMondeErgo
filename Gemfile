@@ -47,3 +47,8 @@ end
 gem 'nokogiri'
 
 gem "haml-rails"
+
+# Twitter bootstrap
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
