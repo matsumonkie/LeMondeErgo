@@ -48,8 +48,13 @@ class Article
       links.push(link)
     end
 
-    titles.zip(links) do |title, link|
-      articles.push(Article.new(title, desc = "", link, img = ""))
+    images = []
+    dom.css("img").each do |i|
+      images.push(i['data-src'])
+    end
+
+    titles.zip(links, images) do |title, link, image|
+      articles.push(Article.new(title, desc = "", link, image))
     end
 
     return articles  
