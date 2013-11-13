@@ -5,8 +5,8 @@ class Section
 
   CSS_QUERY_FOR_SECTIONS = "html body section.global.bord_rubrique.bordt3.deroule_edito"
   CSS_QUERY_FOR_HEADER = "header h1 a"
-  CSS_QUERY_FOR_ARTICLES_CONTAINER = ".container .grid_12 .grid_6"
   CSS_QUERY_FOR_MAIN_ARTICLE_CONTAINER = "article"
+  CSS_QUERY_FOR_ARTICLES_CONTAINER = ".container .grid_12 .grid_6"
 
   attr_reader :header
   attr_reader :main_article
