@@ -17,7 +17,7 @@ class Section
   end
 
   def self.lasts
-    raw_sections = getSectionsFromLeMonde
+    raw_sections = getSectionsFromLeMondeMock
 
     sections = []
     raw_sections.each do |s|
@@ -47,6 +47,16 @@ class Section
     end
 
     return sections
+  end
+
+  def self.getSectionsFromLeMondeMock
+    html = Nokogiri::HTML(File.open("test/models/lemonde_mock.html"))
+    sections = []
+    html.css(CSS_QUERY_FOR_SECTIONS).each do |s|
+      sections.push(s)
+    end
+
+    return sections  
   end
 
 end

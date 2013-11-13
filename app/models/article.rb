@@ -54,7 +54,7 @@ class Article
       articles.push(Article.new(title, desc = "", link, image))
     end
 
-    return articles  
+    return joinArrayByPair(articles)
   end
 
   private
@@ -67,6 +67,11 @@ class Article
     end
     
     return url
-  end  
+  end
+
+  # [1,2,3,4] should become [[1,2], [3,4]]
+  def self.joinArrayByPair(array)
+    return array.each_slice(2).to_a
+  end
   
 end
