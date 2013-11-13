@@ -2,10 +2,7 @@ require 'nokogiri'
 
 class Article
 
-  attr_reader :title
-  attr_reader :link
-  attr_reader :desc
-  attr_reader :img
+  attr_reader :title, :desc, :link, :img
 
   def initialize(title, desc, link, img)
     @title = title
