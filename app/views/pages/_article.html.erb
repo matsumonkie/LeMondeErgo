@@ -1,9 +1,13 @@
 <div class="row">
-<div class="span4 offset2">
-  <%= article[0].title %>
+  <%- article.each_with_index do |a, i| %>
+    <% if i % 2 == 0 %> <div class="span4 offset2">
+    <% else %>          <div class="span4">  
+    <% end %> 
+      <div class="row-fluid">
+        <div class="span4"><img src="<%= a.img %>"></img></div>    
+        <div class="span8"><%= a.title %></div>    
+      </div>
+    </div>
+  <% end %>
 </div>
 
-<div class="span4">
-  <%= article[1].title %>
-</div>
-</div>
