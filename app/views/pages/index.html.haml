@@ -1,6 +1,7 @@
 - @sections.each do |section|
-  .row
-    .span12.text-center
-      %h1= section.header
-    = render partial: 'main_article', object: section.main_article
-  = render partial: 'article', collection: section.articles
+  .section
+    .row
+      .span12.text-center
+        %h1= section.header
+      = render partial: 'main_article', object: section.main_article
+    = render partial: 'article', collection: section.articles
