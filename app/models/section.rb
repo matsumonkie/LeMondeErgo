@@ -8,12 +8,13 @@ class Section
   CSS_QUERY_FOR_MAIN_ARTICLE_CONTAINER = "article"
   CSS_QUERY_FOR_ARTICLES_CONTAINER = ".container .grid_12 .grid_6"
 
-  attr_reader :header, :main_article, :articles
-
+  attr_reader :header, :main_article, :articles, :colors
+  
   def initialize(header, main_article, articles)
     @header = header
     @main_article = main_article
     @articles = articles
+    @colors = ["#1f0d67", "#fe2f2f", "#d50303", "#6faa12", "#006169", "#30932e", "#f20559", "#0cb4ae", "#ff6e17", "#1f0d67", "#fe2f2f", "#d50303", "#6faa12", "#006169", "#30932e", "#f20559", "#0cb4ae", "#ff6e17"]
   end
 
   def self.lasts

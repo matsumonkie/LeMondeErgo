@@ -1,7 +1,8 @@
 - @sections.each do |section|
+- @color = section.colors.sample
   %section
     .row
-      .span12.text-center
-        %h1= section.header
-      = render partial: 'main_article', object: section.main_article
-    = render partial: 'article', collection: section.articles
+      .span10.offset1.section-container
+        %h1.text-center{:style => "margin-top:-1px; color:#{@color}; border-top: thick solid #{@color};"}= section.header
+        = render partial: 'main_article', object: section.main_article
+        = render partial: 'article', collection: section.articles
