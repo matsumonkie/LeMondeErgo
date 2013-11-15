@@ -23,6 +23,7 @@
       <% # Secondary articles %>
       <div class="row">
         <%- premiere.secondary_articles.each do |a| %>
+          <img class="float-left-img" src="<%= a.img %>"></img>
           <a href="<%= a.link %>"> <%= a.title %> </a> </br>
           <p> <%= a.desc %> </p>
         <% end %>        

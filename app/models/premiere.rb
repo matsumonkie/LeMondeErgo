@@ -36,12 +36,13 @@ class Premiere
   end
 
   def self.getSecondaryArticlesFromDom(dom)
-    articles = []
     descriptions = dom.css("article > p")
-    images = dom.css("article > a > img")
+    images = dom.css("article > a img")
     titlesAndLinks = dom.css("article > a")
-    titlesAndLinks.zip(descriptions).each do |a, d|
-      articles.push(Article.new(a.text, d.text, a['href'], ""))
+
+    articles = []
+    titlesAndLinks.zip(descriptions, images).each do |a, d, i|
+      articles.push(Article.new(a.text, d.text, a['href'], i['src']))
     end
     
     return articles
