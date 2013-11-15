@@ -3,7 +3,9 @@
     <%= image_tag("logo.png", width: "180") %>    
   </div>
   <%= premiere.couverture.title %>
-  <img src="<%= premiere.couverture.image %>"
+  <%= premiere.couverture.desc %>
+  <img src="<%= premiere.couverture.image %>"></img>
+  <a href="<%= premiere.couverture.link %>"> lien </a>
     
 </div>
 

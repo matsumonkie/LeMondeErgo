@@ -2,14 +2,11 @@ require 'nokogiri'
 
 class Premiere
 
-  CSS_QUERY_FOR_SECTIONS = "html body section.global.bord_rubrique.bordt3.deroule_edito:not(.promo)"
-  CSS_QUERY_FOR_HEADER = "header h1 a"
-  CSS_QUERY_FOR_MAIN_ARTICLE_CONTAINER = "article"
-  CSS_QUERY_FOR_ARTICLES_CONTAINER = ".container .grid_12 .grid_6"
+  CSS_QUERY_FOR_COUVERTURE = "article.titre_une"
 
   attr_reader :couverture, :articles
 
-  Couverture = Struct.new(:title, :image)
+  Couverture = Struct.new(:title, :image, :desc, :link, :links)
   
   def initialize(couverture, articles)
     @couverture = couverture
@@ -17,30 +14,29 @@ class Premiere
   end
 
   def self.last(dom)
-    raw_sections = getSectionsFromLeMonde(dom)
-
-    return Premiere.new(Couverture.new("haha", "hehe"), "houhou")
+    couverture = getCouvertureFromDom(dom)
+    return Premiere.new(couverture, "")
   end
 
-  def self.formatSection(domSection)
-    header = domSection.css(CSS_QUERY_FOR_HEADER).text
+  def self.getCouvertureFromDom(dom)
+    couverture = dom.css(CSS_QUERY_FOR_COUVERTURE)
 
-    article_container = domSection.css(CSS_QUERY_FOR_MAIN_ARTICLE_CONTAINER)
-    main_article = Article.getMainArticleFromDOM(article_container)
+    title = couverture.css("h1").text
 
-    articles_container = domSection.css(CSS_QUERY_FOR_ARTICLES_CONTAINER)
-    articles = Article.getArticlesFromDom(articles_container)
-    
-    return Section.new(header, main_article, articles)
-  end
-
-  def self.getSectionsFromLeMonde(dom)
-    sections = []
-    dom.css(CSS_QUERY_FOR_SECTIONS).each do |s|
-      sections.push(s)
+    image = ""
+    couverture.css("img").each do |i|
+      image = i['src']
     end
 
-    return sections
+    desc = couverture.css(".description").text
+    link = ""
+    couverture.css("a").each do |l|
+      link = l['href']  
+    end
+
+    links = ""
+    
+    return Couverture.new(title, image, desc, link, links)
   end
 
 end

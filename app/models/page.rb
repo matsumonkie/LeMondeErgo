@@ -3,6 +3,8 @@ require 'nokogiri'
 
 class Page
 
+  CSS_QUERY_FOR_PREMIERE = ".titres_edito"
+
   attr_reader :premiere, :sectionsAndColors
   
   def initialize(premiere, sections)
@@ -12,7 +14,7 @@ class Page
   
   def self.last
     dom = getLeMondeMockHTML
-    premiere = Premiere.last(dom)
+    premiere = Premiere.last(dom.css(CSS_QUERY_FOR_PREMIERE))
     sections = Section.lasts(dom)
 
     return Page.new(premiere, sections)
