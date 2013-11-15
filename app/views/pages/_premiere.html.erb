@@ -16,7 +16,9 @@
           <% # Links related to the premiere %>    
           <ul style="overflow: hidden;">
           <%- premiere.couverture.links.each do |l| %>
-            <li style="list-style-position:inside; line-height:1"><a style="font-size:11px" href="<%= l.link %>"><%= l.text %></a></li>
+            <li style="list-style-position:inside; line-height:1">
+              <a style="font-size:11px" href="<%= l.link %>"><%= l.text %></a>
+            </li>
           <% end %>        
           </ul>
         </a>
