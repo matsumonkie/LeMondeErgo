@@ -8,7 +8,7 @@ class Section
   CSS_QUERY_FOR_MAIN_ARTICLE_CONTAINER = "article"
   CSS_QUERY_FOR_ARTICLES_CONTAINER = ".container .grid_12 .grid_6"
 
-  attr_reader :header, :main_article, :articles, :colors
+  attr_reader :header, :main_article, :articles
   
   def initialize(header, main_article, articles)
     @header = header

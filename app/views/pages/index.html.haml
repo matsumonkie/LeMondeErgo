@@ -1,6 +1,6 @@
 %section.premiere 
-  = render partial: 'premiere'
-- @sectionsAndColors.each do |section, color|
+  = render partial: 'premiere', object: @page.premiere
+- @page.sectionsAndColors.each do |section, color|
   %section
     .row
       .span10.offset1.section-container
