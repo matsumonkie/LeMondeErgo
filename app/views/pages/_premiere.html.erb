@@ -1,34 +1,36 @@
-<% #Logo %>
 <div class="row">
-  <div class="logo span6 offset3" style="text-align:center">
-    <%= image_tag("logo.png", width: "180") %>    
-  </div>
-</div>
+  <div class="span11 offset1 section-container">
 
-<% #Premiere %>
-<div class="row">
-  <div class="logo span10 offset1">
-    <a href="<%= premiere.couverture.link %>"> 
-      <img class="couverture premiere float-left-img" src="<%= premiere.couverture.image %>"></img>
-      <h2> <%= premiere.couverture.title %> </h2>
-      <p><%= premiere.couverture.desc %></p>
+    <h1 style="margin-top:-1px; border-top: thick solid black;">
+      <%= image_tag("logo.png", class: "logo") %>    
+    </h1>
 
-      <% # Links related to the premiere %>
-      <div class="row">
-        <%- premiere.couverture.links.each do |l| %>
-          <a href="<%= l.link %>"> <%= l.text %> </a> </br>
-        <% end %>        
+    <% #Premiere %>
+    <div class="row">
+      <div class="span9 offset1">
+        <a href="<%= premiere.couverture.link %>">
+          <img class="couverture premiere float-left-img" src="<%= premiere.couverture.image %>"></img>
+          <h2> <%= premiere.couverture.title %> </h2>
+          <p><%= premiere.couverture.desc %></p>
+    
+          <% # Links related to the premiere %>    
+          <ul style="overflow: hidden;">
+          <%- premiere.couverture.links.each do |l| %>
+            <li style="list-style-position:inside; line-height:1"><a style="font-size:11px" href="<%= l.link %>"><%= l.text %></a></li>
+          <% end %>        
+          </ul>
+        </a>
       </div>
+    </div>
+    
+    <% # Secondary articles %>
+    <div class="row">
+    <%- premiere.secondary_articles.each do |a| %>
+      <img class="float-left-img" src="<%= a.img %>"></img>
+      <a href="<%= a.link %>"> <%= a.title %> </a> </br>
+        <p> <%= a.desc %> </p>
+    <% end %>        
+    </div>              
 
-      <% # Secondary articles %>
-      <div class="row">
-        <%- premiere.secondary_articles.each do |a| %>
-          <img class="float-left-img" src="<%= a.img %>"></img>
-          <a href="<%= a.link %>"> <%= a.title %> </a> </br>
-          <p> <%= a.desc %> </p>
-        <% end %>        
-      </div>
-       
-    </a>
   </div>
 </div>
