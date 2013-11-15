@@ -19,6 +19,15 @@
           <a href="<%= l.link %>"> <%= l.text %> </a> </br>
         <% end %>        
       </div>
+
+      <% # Secondary articles %>
+      <div class="row">
+        <%- premiere.secondary_articles.each do |a| %>
+          <a href="<%= a.link %>"> <%= a.title %> </a> </br>
+          <p> <%= a.desc %> </p>
+        <% end %>        
+      </div>
+       
     </a>
   </div>
 </div>
