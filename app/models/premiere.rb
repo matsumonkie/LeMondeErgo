@@ -1,29 +1,25 @@
 require 'nokogiri'
 
-class Section
+class Premiere
 
   CSS_QUERY_FOR_SECTIONS = "html body section.global.bord_rubrique.bordt3.deroule_edito:not(.promo)"
   CSS_QUERY_FOR_HEADER = "header h1 a"
   CSS_QUERY_FOR_MAIN_ARTICLE_CONTAINER = "article"
   CSS_QUERY_FOR_ARTICLES_CONTAINER = ".container .grid_12 .grid_6"
 
-  attr_reader :header, :main_article, :articles
+  attr_reader :couverture, :articles
+
+  Couverture = Struct.new(:title, :image)
   
-  def initialize(header, main_article, articles)
-    @header = header
-    @main_article = main_article
+  def initialize(couverture, articles)
+    @couverture = couverture
     @articles = articles
   end
 
-  def self.lasts(dom)
+  def self.last(dom)
     raw_sections = getSectionsFromLeMonde(dom)
 
-    sections = []
-    raw_sections.each do |s|
-      sections.push(formatSection(s))
-    end
-
-    return sections
+    return Premiere.new(Couverture.new("haha", "hehe"), "houhou")
   end
 
   def self.formatSection(domSection)
