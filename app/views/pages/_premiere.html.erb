@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="span11 offset1 section-container">
+  <div class="span10 offset1 section-container">
 
     <h1 style="margin-top:-1px; border-top: thick solid black;">
       <%= image_tag("logo.png", class: "logo") %>    
@@ -7,7 +7,7 @@
 
     <% #Premiere %>
     <div class="row">
-      <div class="span9 offset1">
+      <div class="span8 offset1">
         <a href="<%= premiere.couverture.link %>">
           <img class="couverture premiere float-left-img" src="<%= premiere.couverture.image %>"></img>
           <h2> <%= premiere.couverture.title %> </h2>
@@ -25,14 +25,21 @@
       </div>
     </div>
     
-    <% # Secondary articles %>
     <div class="row">
-    <%- premiere.secondary_articles.each do |a1, a2| %>
-      <img class="float-left-img" src="<%= a1.img %>"></img>
-      <a href="<%= a1.link %>"> <%= a1.title %> </a> </br>
-        <p> <%= a1.desc %> </p>
-    <% end %>        
-    </div>              
+    <%- premiere.secondary_articles.each_with_index do |a, i| %>           
+        <% if i.even? %> <div class="span4 offset1">
+        <% else %>       <div class="span4">  
+        <% end %> 
+          <a href="<%= a.link %>"> 
+            <%= a.title %> 
+            <div>
+              <img class="float-left-img" style="width:200px" src="<%= a.img %>"></img>
+              <p> <%= a.desc %> </p>
+            </div>        
+          </a>
+        </div>              
+      <% end %>        
+        </div>              
 
   </div>
 </div>
