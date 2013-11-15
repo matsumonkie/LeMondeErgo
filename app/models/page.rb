@@ -13,7 +13,8 @@ class Page
   end
   
   def self.last
-    dom = getLeMondeMockHTML
+#   dom = getLeMondeMockHTML
+    dom = getLeMondeHTML
     premiere = Premiere.last(dom.css(CSS_QUERY_FOR_PREMIERE))
     sections = Section.lasts(dom)
 

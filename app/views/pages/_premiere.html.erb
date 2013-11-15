@@ -1,12 +1,24 @@
+<% #Logo %>
 <div class="row">
   <div class="logo span6 offset3" style="text-align:center">
     <%= image_tag("logo.png", width: "180") %>    
   </div>
-  <%= premiere.couverture.title %>
-  <%= premiere.couverture.desc %>
-  <img src="<%= premiere.couverture.image %>"></img>
-  <a href="<%= premiere.couverture.link %>"> lien </a>
-    
 </div>
 
+<% #Premiere %>
+<div class="row">
+  <div class="logo span10 offset1">
+    <a href="<%= premiere.couverture.link %>"> 
+      <img class="couverture premiere float-left-img" src="<%= premiere.couverture.image %>"></img>
+      <h2> <%= premiere.couverture.title %> </h2>
+      <p><%= premiere.couverture.desc %></p>
 
+      <% # Links related to the premiere %>
+      <div class="row">
+        <%- premiere.couverture.links.each do |l| %>
+          <a href="<%= l.link %>"> <%= l.text %> </a> </br>
+        <% end %>        
+      </div>
+    </a>
+  </div>
+</div>

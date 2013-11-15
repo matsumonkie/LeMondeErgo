@@ -2,11 +2,12 @@ require 'nokogiri'
 
 class Premiere
 
-  CSS_QUERY_FOR_COUVERTURE = "article.titre_une"
+  CSS_QUERY_FOR_COUVERTURE = ".titres_edito"
 
   attr_reader :couverture, :articles
 
   Couverture = Struct.new(:title, :image, :desc, :link, :links)
+  Link = Struct.new(:text, :link)
   
   def initialize(couverture, articles)
     @couverture = couverture
@@ -21,21 +22,16 @@ class Premiere
   def self.getCouvertureFromDom(dom)
     couverture = dom.css(CSS_QUERY_FOR_COUVERTURE)
 
-    title = couverture.css("h1").text
+    title = couverture.at_css("h1").text
+    image = couverture.at_css(".titre_une img")['src']
+    desc = couverture.at_css(".titre_une .description").text
+    link = couverture.at_css(".titre_une a")['href']  
 
-    image = ""
-    couverture.css("img").each do |i|
-      image = i['src']
+    links = []
+    couverture.css(".liste_une a").each do |l|      
+      links.push(Link.new(l.text, l['href']))
     end
 
-    desc = couverture.css(".description").text
-    link = ""
-    couverture.css("a").each do |l|
-      link = l['href']  
-    end
-
-    links = ""
-    
     return Couverture.new(title, image, desc, link, links)
   end
 
