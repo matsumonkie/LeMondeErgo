@@ -1,13 +1,15 @@
 <div class="row">
   <%- article.each_with_index do |a, i| %>
+    <a href="<%= a.link %>">
     <% if i.even? %> <div class="span4 offset1">
     <% else %>       <div class="span4">  
     <% end %> 
     <div class="article">
-      <img class="aa" src="<%= a.img %>"></img>
+      <img class="small-article" src="<%= a.img %>"></img>
       <p><%= a.title %></p>
     </div>
     </div>
+    </a>
   <% end %>
 </div>
 
