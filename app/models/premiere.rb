@@ -45,7 +45,7 @@ class Premiere
       articles.push(Article.new(a.text, d.text, a['href'], i['src']))
     end
     
-    return articles
+    return Util.joinArrayByPair(articles)
   end
 
 end

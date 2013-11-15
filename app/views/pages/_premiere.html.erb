@@ -27,10 +27,10 @@
     
     <% # Secondary articles %>
     <div class="row">
-    <%- premiere.secondary_articles.each do |a| %>
-      <img class="float-left-img" src="<%= a.img %>"></img>
-      <a href="<%= a.link %>"> <%= a.title %> </a> </br>
-        <p> <%= a.desc %> </p>
+    <%- premiere.secondary_articles.each do |a1, a2| %>
+      <img class="float-left-img" src="<%= a1.img %>"></img>
+      <a href="<%= a1.link %>"> <%= a1.title %> </a> </br>
+        <p> <%= a1.desc %> </p>
     <% end %>        
     </div>              
 

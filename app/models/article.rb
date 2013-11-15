@@ -25,7 +25,7 @@ class Article
       link = a['href']
     end
 
-    link = addWebsiteURLIfMissing(link)
+    link = Util.addWebsiteURLIfMissing(link)
     
     return Article.new(title, desc, link, img)
   end
@@ -41,7 +41,7 @@ class Article
     links = []
     dom.css("a").each do |l|
       link = l['href']
-      link = addWebsiteURLIfMissing(link)      
+      link = Util.addWebsiteURLIfMissing(link)      
       links.push(link)
     end
 
@@ -54,24 +54,7 @@ class Article
       articles.push(Article.new(title, desc = "", link, image))
     end
 
-    return joinArrayByPair(articles)
-  end
-
-  private
-
-  def self.addWebsiteURLIfMissing(url)
-    url = if (url.start_with?("/"))
-      LeMondeErgo::Application::LE_MONDE_SITE_URL + url
-    else
-      url
-    end
-    
-    return url
-  end
-
-  # [1,2,3,4] should become [[1,2], [3,4]]
-  def self.joinArrayByPair(array)
-    return array.each_slice(2).to_a
+    return Util.joinArrayByPair(articles)
   end
   
 end
