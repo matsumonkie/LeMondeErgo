@@ -18,7 +18,8 @@
           <%- premiere.couverture.links.each do |l| %>
             <li style="list-style-position:inside; line-height:1">
               <a style="font-size:11px" href="<%= l.link %>"><%= l.text %></a>
-            </li>
+              <%= render partial: 'mouse_kill_link', object: "aa" %>
+            </li>             
           <% end %>        
           </ul>
         </a>
