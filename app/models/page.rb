@@ -22,11 +22,15 @@ class Page
   end
 
   def self.getLeMondeHTML
-    return Nokogiri::HTML(open(LeMondeErgo::Application::LE_MONDE_SITE_URL))
+    dom = Nokogiri::HTML(open(LeMondeErgo::Application::LE_MONDE_SITE_URL))
+    dom.search(".nb_reactions").remove
+    return dom
   end
 
   def self.getLeMondeMockHTML
-     return Nokogiri::HTML(File.open("test/models/lemonde_mock.html"))
+     dom = Nokogiri::HTML(File.open("test/models/lemonde_mock.html"))
+     dom.search(".nb_reactions").remove
+     return dom
   end
   
 end
