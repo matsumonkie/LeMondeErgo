@@ -22,15 +22,13 @@
      responsiveFallback: false       // You can fallback to normal page scroll by defining the width of the browser in which you want the responsive fallback to be triggered. For example, set this to 600 and whenever the browser's width is less than 600, the fallback will kick in.
   });
 
-  var setOflettersAvailable = ['a', 'u', 'i', 'e', 't', 's', 'r', 'n']
+  var setOflettersAvailable = "auietsrn"
 
   function getAllCombinationOfPairs(letters) {
     function loop(letters, acc) {
       if (letters.length) {
-        head = letters[0]
-        letters.forEach(function(c) { acc.push(head + c) });
-        tail = letters.slice(1)
-        return loop(tail, acc)
+        _.each(letters, function(c) { acc.push(_.head(letters) + c) });
+        return loop(_.tail(letters), acc)
       } else {
         return acc;
       }
@@ -42,14 +40,14 @@
   var combinations = getAllCombinationOfPairs(setOflettersAvailable);
   console.log(combinations)
 
-  var linkList = jQuery("a.nomouse");
-  for (i = 0; i < linkList.length; i++) {
-    var link = linkList[i];
-    var trigger = combinations[i];
+  _.each(_.zip($("a.nomouse"), combinations), function(item) {
+    var link = _.first(item)
+    var trigger = _.last(item)
     foo = $(link).append("<i class='icon-plus' style='font-size:0.8em'>" + trigger + "</i>");
-    console.log(trigger)
-    Mousetrap.bind('a a', function() {
+    // this is so ugly, I am ashamed :-(
+    var binding = trigger.split('').join(' ')
+    Mousetrap.bind(binding, function() {
       window.open(link['href']);
     });
-  }
+  });
 
