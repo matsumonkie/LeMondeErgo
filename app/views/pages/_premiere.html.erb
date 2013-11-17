@@ -12,17 +12,16 @@
           <img class="couverture premiere float-left-img" src="<%= premiere.couverture.image %>"></img>
           <h2> <%= premiere.couverture.title %> </h2>
           <p><%= premiere.couverture.desc %></p>
-    
-          <% # Links related to the premiere %>    
-          <ul style="overflow: hidden;">
+        </a>
+   
+        <% # Links related to the premiere %>    
+        <ul style="overflow: hidden;">
           <%- premiere.couverture.links.each do |l| %>
             <li style="list-style-position:inside; line-height:1">
-              <a style="font-size:11px" href="<%= l.link %>"><%= l.text %></a>
-              <%= render partial: 'mouse_kill_link', object: "aa" %>
+              <a class="nomouse" style="font-size:11px" href="<%= l.link %>"><%= l.text %></a>
             </li>             
           <% end %>        
-          </ul>
-        </a>
+        </ul>
       </div>
     </div>
     

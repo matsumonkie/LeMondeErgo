@@ -39,4 +39,17 @@
     return loop(letters, [])
   }
 
-  console.log(getAllCombinationOfPairs(setOflettersAvailable));
+  var combinations = getAllCombinationOfPairs(setOflettersAvailable);
+  console.log(combinations)
+
+  var linkList = jQuery("a.nomouse");
+  for (i = 0; i < linkList.length; i++) {
+    var link = linkList[i];
+    var trigger = combinations[i];
+    foo = $(link).append("<i class='icon-plus' style='font-size:0.8em'>" + trigger + "</i>");
+    console.log(trigger)
+    Mousetrap.bind('a a', function() {
+      window.open(link['href']);
+    });
+  }
+
