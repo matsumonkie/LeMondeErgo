@@ -11,14 +11,20 @@
         <a href="<%= premiere.couverture.link %>">
           <img class="couverture premiere float-left-img" src="<%= premiere.couverture.image %>"></img>
           <h2> <%= premiere.couverture.title %> </h2>
-          <p><%= premiere.couverture.desc %></p>
+          <p>
+            <%= premiere.couverture.desc %>
+            <%= render partial: 'no_mouse_link', object: premiere.couverture.link %>
+          </p>
         </a>
    
         <% # Links related to the premiere %>    
         <ul style="overflow: hidden;">
           <%- premiere.couverture.links.each do |l| %>
             <li style="list-style-position:inside; line-height:1">
-              <a class="nomouse" style="font-size:11px" href="<%= l.link %>"><%= l.text %></a>
+              <a href="<%= l.link %>">
+              <%= l.text %>
+              <%= render partial: 'no_mouse_link', object: l.link %>
+              </a>
             </li>             
           <% end %>        
         </ul>
@@ -34,7 +40,10 @@
             <%= a.title %> 
             <div>
               <img class="float-left-img" style="width:150px" src="<%= a.img %>"></img>
-              <p> <%= a.desc %> </p>
+              <p> 
+                <%= a.desc %> 
+                <%= render partial: 'no_mouse_link', object: a.link %>
+              </p>
             </div>        
           </a>
         </div>              

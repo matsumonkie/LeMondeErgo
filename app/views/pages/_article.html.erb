@@ -6,7 +6,10 @@
     <% end %> 
     <div class="article">
       <img class="float-left-img" src="<%= a.img %>"></img>
-      <p><%= a.title %></p>
+      <p>
+        <%= a.title %>
+        <%= render partial: 'no_mouse_link', object: a.link %>
+      </p>
     </div>
     </div>
     </a>

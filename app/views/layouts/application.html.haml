@@ -40,14 +40,15 @@
   var combinations = getAllCombinationOfPairs(setOflettersAvailable);
   console.log(combinations)
 
-  _.each(_.zip($("a.nomouse"), combinations), function(item) {
+  _.each(_.zip($(".nomouse"), combinations), function(item) {
     var link = _.first(item)
     var trigger = _.last(item)
-    foo = $(link).append("<i class='icon-plus' style='font-size:0.8em'>" + trigger + "</i>");
-    // this is so ugly, I am ashamed :-(
+    $(link).append("<i class='icon-plus' style='font-size:0.8em'>" + trigger + "</i>");
+    // this is so ugly, but that is Javascript fault :-(
     var binding = trigger.split('').join(' ')
     Mousetrap.bind(binding, function() {
-      window.open(link['href']);
+      //console.log(link['dest']);
+      window.open(link['dest']);
     });
   });
 
