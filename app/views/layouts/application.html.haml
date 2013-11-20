@@ -22,22 +22,25 @@
      responsiveFallback: false       // You can fallback to normal page scroll by defining the width of the browser in which you want the responsive fallback to be triggered. For example, set this to 600 and whenever the browser's width is less than 600, the fallback will kick in.
   });
 
-  var setOflettersAvailable = "auietsrn"
+  function allCombinations(letters, combinationSize) {
+    function loop(acc, iteration) {
+      if (iteration > 1) {
+        acc = _.map(letters, function(l) { 
+          return _.map(acc, function(c) { return c + l; });
+        });
+        acc = _.flatten(acc);
 
-  function getAllCombinationOfPairs(letters) {
-    function loop(letters, acc) {
-      if (letters.length) {
-        _.each(letters, function(c) { acc.push(_.head(letters) + c) });
-        return loop(_.tail(letters), acc)
+        return loop(acc, iteration - 1);
       } else {
         return acc;
       }
     }
-
-    return loop(letters, [])
+    
+    return loop(letters.split(''), 3); 
   }
 
-  var combinations = getAllCombinationOfPairs(setOflettersAvailable);
+  var setOflettersAvailable = "auietsrn"
+  var combinations = allCombinations(setOflettersAvailable, 3);
   console.log(combinations)
 
   _.each(_.zip($(".nomouse"), combinations), function(item) {
