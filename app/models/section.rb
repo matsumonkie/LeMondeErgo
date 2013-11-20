@@ -23,7 +23,7 @@ class Section
       sections.push(formatSection(s))
     end
 
-    return sections
+    sections
   end
 
   def self.formatSection(domSection)
@@ -35,7 +35,7 @@ class Section
     articles_container = domSection.css(CSS_QUERY_FOR_ARTICLES_CONTAINER)
     articles = Article.getArticlesFromDom(articles_container)
     
-    return Section.new(header, main_article, articles)
+    Section.new(header, main_article, articles)
   end
 
   def self.getSectionsFromLeMonde(dom)
@@ -44,7 +44,7 @@ class Section
       sections.push(s)
     end
 
-    return sections
+    sections
   end
 
 end

@@ -12,7 +12,7 @@ class Util
 
   # [1,2,3,4] should become [[1,2], [3,4]]
   def self.joinArrayByPair(array)
-    return array.each_slice(2).to_a
+    array.each_slice(2).to_a
   end
 
 end

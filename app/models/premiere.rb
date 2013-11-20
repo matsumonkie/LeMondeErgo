@@ -18,7 +18,7 @@ class Premiere
   def self.last(dom)
     couverture = getCouvertureFromDom(dom.css(CSS_QUERY_FOR_COUVERTURE))
     secondaryArticles = getSecondaryArticlesFromDom(dom.css(CSS_QUERY_FOR_SECOND_ARTICLES))
-    return Premiere.new(couverture, secondaryArticles)
+    Premiere.new(couverture, secondaryArticles)
   end
 
   def self.getCouvertureFromDom(dom)

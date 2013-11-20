@@ -27,7 +27,7 @@ class Article
 
     link = Util.addWebsiteURLIfMissing(link)
     
-    return Article.new(title, desc, link, img)
+    Article.new(title, desc, link, img)
   end
 
   def self.getArticlesFromDom(dom)
@@ -54,7 +54,7 @@ class Article
       articles.push(Article.new(title, desc = "", link, image))
     end
 
-    return Util.joinArrayByPair(articles)
+    Util.joinArrayByPair(articles)
   end
   
 end
