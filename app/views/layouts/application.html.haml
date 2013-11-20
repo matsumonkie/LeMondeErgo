@@ -43,15 +43,24 @@
   var combinations = allCombinations(setOflettersAvailable, 3);
   console.log(combinations)
 
-  _.each(_.zip($(".nomouse"), combinations), function(item) {
+  var links = $("span.nomouse[dest]")
+  var combinationsUsed = _.take(combinations, links.length)
+  var hashArray = []
+  _.each(_.zip(links, combinationsUsed), function(item) {
     var link = _.first(item)
     var trigger = _.last(item)
-    $(link).append("<i class='icon-plus' style='font-size:0.8em'>" + trigger + "</i>");
-    // this is so ugly, but that is Javascript fault :-(
+
+    $(link).append("<i class='icon-plus'>" + trigger + "</i>");
+    var dest = link.getAttribute("dest")
+    hashArray[trigger] = dest
+    // this is so ugly, I hate Javascript :-(
     var binding = trigger.split('').join(' ')
-    Mousetrap.bind(binding, function() {
-      //console.log(link['dest']);
-      window.open(link['dest']);
+
+    Mousetrap.bind(binding, function(e, combo) {
+      # this is even uglier, I just cant like js
+      var comboWithoutSpace = combo.replace(/ /g, '');
+      var link = hashArray[comboWithoutSpace];
+      window.open(link);
     });
   });
 
