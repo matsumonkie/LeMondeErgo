@@ -1,5 +1,4 @@
 class Util
-
   
   def self.addWebsiteURLIfMissing(url)
     url = if (url.start_with?("/"))

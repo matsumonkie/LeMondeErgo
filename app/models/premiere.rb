@@ -25,14 +25,15 @@ class Premiere
     title = dom.at_css("h1").text
     image = dom.at_css(".titre_une img")['src']
     desc = dom.at_css(".titre_une .description").text
-    link = dom.at_css(".titre_une a")['href']  
+    link = dom.at_css(".titre_une a")['href']
+    link = Util.addWebsiteURLIfMissing(link)
 
     links = []
-    dom.css(".liste_une a").each do |l|      
-      links.push(Link.new(l.text, l['href']))
+    dom.css(".liste_une a").each do |l|         
+      links.push(Link.new(l.text, Util.addWebsiteURLIfMissing(l['href'])))
     end
 
-    return Couverture.new(title, image, desc, link, links)
+    Couverture.new(title, image, desc, link, links)
   end
 
   def self.getSecondaryArticlesFromDom(dom)
@@ -42,10 +43,12 @@ class Premiere
 
     articles = []
     titlesAndLinks.zip(descriptions, images).each do |a, d, i|
-      articles.push(Article.new(a.text, d.text, a['href'], i['src']))
+      link = a['href']
+      link = Util.addWebsiteURLIfMissing(link)
+      articles.push(Article.new(a.text, d.text, link, i['src']))
     end
     
-    return articles
+    articles
   end
 
 end
