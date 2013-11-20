@@ -4,6 +4,6 @@
   %section
     .row
       .span10.offset1.section-container
-        %h1.text-center{:style => "margin-top:-1px; color:#{color}; border-top: thick solid #{color};"}= section.header
+        %h1.text-center{:style => "color:#{color}; border-top: thick solid #{color};"}= section.header
         = render partial: 'main_article', object: section.main_article
         = render partial: 'article', collection: section.articles
