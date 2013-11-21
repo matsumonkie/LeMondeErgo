@@ -1,5 +1,5 @@
+<%- article.in_groups_of(2) do |a| %>
 <div class="row">
-  <%- article.in_groups_of(2) do |a| %>
   <a href="<%= a.first.link %>">
     <div class="span4 offset1">
       <div class="article">
@@ -22,6 +22,6 @@
       </div>  
     </div>
   </a>
-  <% end %>
 </div>
+<% end %>
 
