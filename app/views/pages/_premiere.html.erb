@@ -1,6 +1,7 @@
 <div class="row">
   <div class="span10 offset1 section-container">
-
+    
+    <% #Logo %>
     <h1 style="margin-top:-1px; border-top: thick solid black;">
       <%= image_tag("logo.png", class: "logo") %>    
     </h1>
@@ -31,24 +32,34 @@
       </div>
     </div>
     
+    <%- premiere.secondary_articles.in_groups_of(2) do |a| %>           
     <div class="row">
-    <%- premiere.secondary_articles.each_with_index do |a, i| %>           
-        <% if i.even? %> <div class="span4 offset1">
-        <% else %>       <div class="span4">  
-        <% end %> 
-          <a href="<%= a.link %>"> 
-            <%= a.title %> 
-            <div>
-              <img class="float-left-img" style="width:150px" src="<%= a.img %>"></img>
-              <p> 
-                <%= a.desc %> 
-                <%= render partial: 'no_mouse_link', object: a.link %>
-              </p>
-            </div>        
-          </a>
-        </div>              
-      <% end %>        
+      <div class="span4 offset1">    
+        <a href="<%= a.first.link %>"> 
+          <%= a.first.title %>
+          <div>
+            <img class="float-left-img" style="width:150px" src="<%= a.first.img %>"></img>
+            <p> 
+              <%= a.first.desc %> 
+              <%= render partial: 'no_mouse_link', object: a.first.link %>
+            </p>
+          </div>        
+        </a>
+      </div>              
+      <div class="span4">    
+        <a href="<%= a.first.link %>"> 
+          <%= a.first.title %>
+          <div>
+            <img class="float-left-img" style="width:150px" src="<%= a.first.img %>"></img>
+            <p> 
+              <%= a.first.desc %> 
+              <%= render partial: 'no_mouse_link', object: a.first.link %>
+            </p>
+          </div>        
+        </a>
+      </div>
     </div>              
+    <% end %>        
 
   </div>
 </div>
