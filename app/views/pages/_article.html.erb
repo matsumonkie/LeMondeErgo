@@ -1,18 +1,27 @@
 <div class="row">
-  <%- article.each_with_index do |a, i| %>
-    <a href="<%= a.link %>">
-    <% if i.even? %> <div class="span4 offset1">
-    <% else %>       <div class="span4">  
-    <% end %> 
-    <div class="article">
-      <img class="float-left-img" src="<%= a.img %>"></img>
-      <p>
-        <%= a.title %>
-        <%= render partial: 'no_mouse_link', object: a.link %>
-      </p>
+  <%- article.in_groups_of(2) do |a| %>
+  <a href="<%= a.first.link %>">
+    <div class="span4 offset1">
+      <div class="article">
+        <img class="float-left-img" src="<%= a.first.img %>"></img>
+        <p>
+          <%= a.first.title %>
+          <%= render partial: 'no_mouse_link', object: a.first.link %>
+        </p>
+      </div>  
     </div>
+  </a>
+  <a href="<%= a.last.link %>">
+    <div class="span4">
+      <div class="article">
+        <img class="float-left-img" src="<%= a.last.img %>"></img>
+        <p>
+          <%= a.last.title %>
+          <%= render partial: 'no_mouse_link', object: a.last.link %>
+        </p>
+      </div>  
     </div>
-    </a>
+  </a>
   <% end %>
 </div>
 

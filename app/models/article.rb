@@ -54,7 +54,7 @@ class Article
       articles.push(Article.new(title, desc = "", link, image))
     end
 
-    Util.joinArrayByPair(articles)
+    articles
   end
   
 end
