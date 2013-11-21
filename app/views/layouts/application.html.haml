@@ -57,7 +57,7 @@
     var binding = trigger.split('').join(' ')
 
     Mousetrap.bind(binding, function(e, combo) {
-      # this is even uglier, I just cant like js
+      //this is even uglier, I just cant like js
       var comboWithoutSpace = combo.replace(/ /g, '');
       var link = hashArray[comboWithoutSpace];
       window.open(link);
