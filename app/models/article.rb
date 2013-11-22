@@ -14,17 +14,8 @@ class Article
   def self.getMainArticleFromDOM(dom)
     title = dom.css("h2").text
     desc =  dom.css("p").text
-
-    img = ""
-    dom.css("img").each do |i|
-      img = i['data-src']    
-    end
-
-    link = ""
-    dom.css("a").each do |a|
-      link = a['href']
-    end
-
+    img = dom.at_css("img")['data-src']    
+    link = dom.at_css("a")['href']
     link = Util.addWebsiteURLIfMissing(link)
     
     Article.new(title, desc, link, img)
