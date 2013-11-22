@@ -47,13 +47,13 @@
         </a>
       </div>              
       <div class="span4">    
-        <a href="<%= a.first.link %>"> 
-          <%= a.first.title %>
+        <a href="<%= a.last.link %>"> 
+          <%= a.last.title %>
           <div>
-            <img class="float-left-img" style="width:150px" src="<%= a.first.img %>"></img>
+            <img class="float-left-img" style="width:150px" src="<%= a.last.img %>"></img>
             <p> 
-              <%= a.first.desc %> 
-              <%= render partial: 'no_mouse_link', object: a.first.link %>
+              <%= a.last.desc %> 
+              <%= render partial: 'no_mouse_link', object: a.last.link %>
             </p>
           </div>        
         </a>
