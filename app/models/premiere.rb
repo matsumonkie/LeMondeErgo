@@ -2,7 +2,6 @@ require 'nokogiri'
 
 class Premiere
 
-  CSS_QUERY_FOR_COUVERTURE = ".titres_edito"
   CSS_QUERY_FOR_SECOND_ARTICLES = ".titres_hauts"
 
   attr_reader :couverture, :secondary_articles
@@ -16,14 +15,15 @@ class Premiere
   end
 
   def self.last(dom)
-    couverture = getCouvertureFromDom(dom.css(CSS_QUERY_FOR_COUVERTURE))
+    couverture = getCouvertureFromDom(dom)
     secondaryArticles = getSecondaryArticlesFromDom(dom.css(CSS_QUERY_FOR_SECOND_ARTICLES))
     Premiere.new(couverture, secondaryArticles)
   end
 
   def self.getCouvertureFromDom(dom)
+    debugger
     title = dom.at_css("h1").text
-    image = dom.at_css(".titre_une img")['src']
+    image = dom.at_css(".titre_une img")["src"]
     desc = dom.at_css(".titre_une .description").text
     link = dom.at_css(".titre_une a")['href']
     link = Util.addWebsiteURLIfMissing(link)

@@ -3,7 +3,7 @@ require 'nokogiri'
 
 class Page
 
-  CSS_QUERY_FOR_PREMIERE = ".titres_edito"
+  CSS_QUERY_FOR_PREMIERE = ".une_edito"
 
   attr_reader :premiere, :sectionsAndColors
   

@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.1'
 
 # Use sqlite3 as the database for Active Record
-#gem 'sqlite3'
+gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -54,3 +54,5 @@ gem "less-rails"
 gem "twitter-bootstrap-rails"
 
 gem 'rails_12factor', group: :production
+
+gem 'debugger'

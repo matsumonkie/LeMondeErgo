@@ -1,23 +1,12 @@
-<%- article.in_groups_of(2) do |a| %>
+<%- article.each do |a| %>
 <div class="row">
-  <a href="<%= a.first.link %>">
-    <div class="span4 offset1">
+  <a href="<%= a.link %>">
+    <div class="span4 <%= cycle("offset1", "") -%>">
       <div class="article">
-        <img class="float-left-img" src="<%= a.first.img %>"></img>
+        <img class="float-left-img" src="<%= a.img %>"></img>
         <p>
-          <%= a.first.title %>
-          <%= render partial: 'no_mouse_link', object: a.first.link %>
-        </p>
-      </div>  
-    </div>
-  </a>
-  <a href="<%= a.last.link %>">
-    <div class="span4">
-      <div class="article">
-        <img class="float-left-img" src="<%= a.last.img %>"></img>
-        <p>
-          <%= a.last.title %>
-          <%= render partial: 'no_mouse_link', object: a.last.link %>
+          <%= a.title %>
+          <%= render partial: 'no_mouse_link', object: a.link %>
         </p>
       </div>  
     </div>
