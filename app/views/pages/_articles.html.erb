@@ -1,0 +1,18 @@
+<%- articles.in_groups_of (2) do |twoArticles| %>
+  <div class="row">
+  <%- twoArticles.each do |a| %>
+    <a href="<%= a.link %>">
+      <div class="span4 <%= cycle("offset1", "") -%>">
+        <div class="article">
+          <img class="float-left-img" src="<%= a.img %>"></img>
+          <p>
+            <%= a.title %>
+            <%= render partial: 'no_mouse_link', object: a.link %>
+          </p>
+        </div>  
+      </div>
+    </a>
+  <% end %>
+  </div>
+<% end %>
+
