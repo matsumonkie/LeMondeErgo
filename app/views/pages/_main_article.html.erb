@@ -1,16 +1,16 @@
 <div class="row">
   <a href="<%= main_article.link %>">
-        <div class="span4 offset1">
-          <img src="<%= main_article.img %>"></img>
-        </div>
-        <div class="span4">
-          <h2> 
-            <%= main_article.title %> 
-          </h2>
-          <p>
-            <%= main_article.desc %>
-            <%= render partial: 'no_mouse_link', object: main_article.link %> 
-          </p>
-        </div>
+    <div class="span4 offset1">
+      <img src="<%= main_article.img %>"></img>
+    </div>
+    <div class="span4">
+      <h2> 
+        <%= main_article.title %> 
+      </h2>
+      <p>
+        <%= main_article.desc %>
+        <%= render partial: 'no_mouse_link', object: main_article.link %> 
+      </p>
+    </div>
   </a>
 </div>

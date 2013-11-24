@@ -32,33 +32,23 @@
       </div>
     </div>
     
-    <%- premiere.secondary_articles.in_groups_of(2) do |a| %>           
-    <div class="row">
-      <div class="span4 offset1">    
-        <a href="<%= a.first.link %>"> 
-          <%= a.first.title %>
-          <div>
-            <img class="float-left-img" style="width:150px" src="<%= a.first.img %>"></img>
-            <p> 
-              <%= a.first.desc %> 
-              <%= render partial: 'no_mouse_link', object: a.first.link %>
-            </p>
-          </div>        
-        </a>
-      </div>              
-      <div class="span4">    
-        <a href="<%= a.last.link %>"> 
-          <%= a.last.title %>
-          <div>
-            <img class="float-left-img" style="width:150px" src="<%= a.last.img %>"></img>
-            <p> 
-              <%= a.last.desc %> 
-              <%= render partial: 'no_mouse_link', object: a.last.link %>
-            </p>
-          </div>        
-        </a>
+    <%- premiere.secondary_articles.in_groups_of(2) do |twoArticles| %>           
+      <div class="row">
+      <%- twoArticles.each do |a| %>
+        <div class="span4 <%= cycle("offset1", "") -%>">
+          <a href="<%= a.link %>"> 
+            <%= a.title %>
+            <div>
+              <img class="float-left-img" style="width:150px" src="<%= a.img %>"></img>
+              <p> 
+                <%= a.desc %> 
+                <%= render partial: 'no_mouse_link', object: a.link %>
+              </p>
+            </div>        
+          </a>
+        </div>
+      <% end %>        
       </div>
-    </div>              
     <% end %>        
 
   </div>
