@@ -21,7 +21,6 @@ class Premiere
   end
 
   def self.getCouvertureFromDom(dom)
-    debugger
     title = dom.at_css("h1").text
     image = dom.at_css(".titre_une img")["src"]
     desc = dom.at_css(".titre_une .description").text
